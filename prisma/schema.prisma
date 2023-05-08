@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// model userPrivate {
+//   id       String @id @default(uuid())
+//   email    String
+//   password String
+
+//   @@map("user_private")
+// }
+
+model userPublic {
+  id        String @id @default(uuid())
+  email     String
+  name      String
+  perfilImg String
+  rgb       Int
+  password  String
+
+  @@map("usuarios")
+}
