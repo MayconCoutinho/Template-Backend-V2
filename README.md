@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/60453269/234358029-2cd4dbec-650f-4709-be2a-510e13db75ed.png" alt="Logo" width="200" height="200" />
+  <img src="https://github.com/MayconCoutinho/Template-Backend-V2/assets/60453269/afb2ac30-593f-4110-8a3e-8aba5e5d5eae" alt="Logo" width="200" height="200" />
 </p>
 
 <h1 align="center"> ExpressJS </h1>
@@ -43,7 +43,7 @@
 
 | vscode|
 |---|
-![image](https://user-images.githubusercontent.com/60453269/234357064-103fb406-08b6-4ede-b4af-e33d141f2077.png)
+![image](https://github.com/MayconCoutinho/Template-Backend-V2/assets/60453269/92057d13-eb05-4fe9-b839-db917e594839)
 
 <br/>
   
@@ -85,7 +85,8 @@
 > Caso tenha Git basta da git clone, caso não tenha baixe o projeto completo em dowlon
 
 ```BASH
-git clone https://github.com/MayconCoutinho/Express-Template
+git clone https://github.com/MayconCoutinho/Template-Backend-V2
+
 ```
 
 <br /> 
@@ -98,17 +99,14 @@ npm i
 
 <br /> 
 
-> OBS - Muito importante, caso não tenha um banco de dados MySQL disponivel, não vai da para rodar o projeto, pois o projeto conecta diretamente com o banco de dados
-> sendo assim crie um arquivo ".env" para por os dados do MySQL.
+> OBS - Muito importante, caso não tenha um banco de dados disponivel, não vai da para rodar o projeto, pois o projeto conecta diretamente com o banco de dados
+> sendo assim crie um arquivo ".env".
 
 
 ```BASH
 
-DB_HOST = Dados MySQL
-DB_USER = Dados MySQL
-DB_PASSWORD = Dados MySQL
-DB_SCHEMA = Dados MySQL
-
+DATABASE_URL="postgresql://Maycon:randompassword@localhost:5432/mydb?schema=public"
+    
 ```
 
 
@@ -118,11 +116,26 @@ DB_SCHEMA = Dados MySQL
 
 ```JSON
   "scripts": {
-    "start": "node ./build/src/index.js",
+   "start": "node ./build/src/index.js",
+    "migrations": "npx prisma migrate dev",
     "build": "tsc",
-    "dev": "ts-node-dev ./src/index.ts",
-    "migrations": "tsc && node ./build/src/database/migrations/Migrations.js",
-    "test": "jest"
+    "dev": "ts-node-dev ./src/server.ts ",
+    "test": "vitest",
+    "commit": "git-cz"
+  }
+
+```
+<br/>
+
+## `📖 husky` 
+    
+    
+```JSON
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
+    }
   }
 
 ```
@@ -133,18 +146,10 @@ DB_SCHEMA = Dados MySQL
 
 ```JSON
   "dependencies": {
-    "@types/bcryptjs": "^2.4.2",
-    "@types/cors": "^2.8.12",
-    "@types/express": "^4.17.14",
-    "@types/jest": "^29.0.3",
-    "@types/jsonwebtoken": "^8.5.9",
-    "@types/knex": "^0.16.1",
-    "@types/node": "^18.7.23",
-    "@types/uuid": "^8.3.4",
-    "jest": "^29.1.1",
-    "ts-jest": "^29.0.2",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^4.8.4"
+    "@prisma/client": "^4.13.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "supertest": "^6.3.3",
   }
 
 ```
@@ -156,18 +161,29 @@ DB_SCHEMA = Dados MySQL
 
 ```JSON
   "devDependencies": {
+    "@commitlint/cli": "^17.6.3",
+    "@commitlint/config-conventional": "^17.6.3",
     "@types/bcryptjs": "^2.4.2",
-    "@types/cors": "^2.8.12",
-    "@types/express": "^4.17.14",
-    "@types/jest": "^29.0.3",
-    "@types/jsonwebtoken": "^8.5.9",
-    "@types/knex": "^0.16.1",
-    "@types/node": "^18.7.23",
-    "@types/uuid": "^8.3.4",
-    "jest": "^29.1.1",
-    "ts-jest": "^29.0.2",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.15",
+    "@types/node": "^18.11.18",
+    "@types/supertest": "^2.0.12",
+    "@typescript-eslint/eslint-plugin": "^5.59.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.40.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-standard-with-typescript": "^34.0.1",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "husky": "^8.0.3",
+    "prettier": "^2.8.8",
+    "prisma": "^4.13.0",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^4.8.4"
+    "typescript": "^4.9.5",
+     "vitest": "^0.31.0"
+
   }
 
 ```
