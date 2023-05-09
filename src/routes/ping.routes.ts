@@ -6,4 +6,6 @@ export const pingRouter = Router();
 
 const pingController = new PingController(new PingBusiness());
 
-pingRouter.get("/", pingController.ping);
+pingRouter.get("/ping/", pingController.ping);
+
+export default pingRouter;

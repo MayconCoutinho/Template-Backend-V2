@@ -1,12 +1,24 @@
-import cors from "cors";
-import express from "express";
-import { pingRouter } from "./router/pingRouter";
+import express, { NextFunction, Request, Response } from "express";
+import AppError from "./error/AppError";
+import pingRouter from "./routes/ping.routes";
 
 const app = express();
-app.use(express.json());
-app.use(cors());
-app.listen(3003, () => {
-	console.log(`Servidor rodando na porta ${3003}`);
+app.use(pingRouter);
+
+app.use((err: Error, request: Request, response: Response, _next: NextFunction) => {
+	if (err instanceof AppError) {
+		return response.status(err.statusCode).json({
+			status: "error",
+			message: err.message,
+		});
+	}
+
+	console.error(err);
+
+	return response.status(500).json({
+		status: "error",
+		message: "Internal server error",
+	});
 });
 
-app.use("/ping", pingRouter);
+export { app };
