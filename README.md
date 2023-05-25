@@ -62,7 +62,28 @@
 
 - [x] - tests: Pasta principal onde fica toda esturutura.
 - [x] - mocks: Testes com dados constantes pre programados
+    
+    <br /> 
+    
+- src/
+    - controllers/       (controladores)
+    - models/            (modelos de dados)
+    - services/          (lógica de negócio)
+    - repositories/      (acesso a dados)
+    - routes/            (rotas da API)
+    - utils/             (utilitários)
+    - app.ts             (ponto de entrada da aplicação)
+    
+   <br /> 
 
+    
+- A pasta models/ contém os modelos de dados, que representam a estrutura e a lógica de negócio dos objetos do sistema.
+- A pasta controllers/ contém os controladores, que são responsáveis por receber as requisições, processá-las e retornar as respostas adequadas.
+- A pasta services/ contém a lógica de negócio do aplicativo, que é responsável por manipular os dados e executar operações complexas.
+- A pasta repositories/ contém o acesso aos dados, como consultas e operações de banco de dados.
+- A pasta routes/ contém as definições de rotas da API, mapeando as URLs para os controladores apropriados.
+- A pasta utils/ contém utilitários auxiliares que podem ser usados em todo o aplicativo.
+    
 
 <br /> 
 
